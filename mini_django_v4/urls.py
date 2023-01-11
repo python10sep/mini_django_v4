@@ -23,6 +23,5 @@ from jobs import views
 urlpatterns = [
     path('admin/', admin.site.urls),
     # path("", views.welcome)
-
-    re_path(r"^wel*", views.welcome)
+    path("jobs/", include("jobs.urls"))
 ]

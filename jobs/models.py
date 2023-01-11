@@ -8,7 +8,7 @@ python manage.py shell
 
 from jobs.models import Portal
 
-### TO CREATE NEW OBJECT
+### TO INSERT NEW OBJECT IN DATABASE
 Portal.objects.create(name="indeed.com", description="NEW")
 
 
