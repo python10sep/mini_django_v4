@@ -5,5 +5,5 @@ from . import views  # import from current directory
 
 urlpatterns = [
     re_path(r"^wel*", views.welcome),
-    path("portal/", views.portal_details)
+    path("portal/", views.portal_details),
 ]
