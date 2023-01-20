@@ -5,8 +5,9 @@ from . import views  # import from current directory
 
 urlpatterns = [
     re_path(r"^wel*", views.welcome, name="welcome"),
-    path("portal/", views.portal_details, name="details"),
-    path("<int:job_id>/", views.job_description, name="JD")
+    path("portal/", views.get_portal_details, name="details"),
+    path("jobtitles/", views.job_titles, name="jobtitle"),
+    path("<int:job_id>/", views.get_job_description, name="JD")
 ]
 ##########################################################
 # How to capture PATH parameters from URL?               #
