@@ -32,6 +32,17 @@ ALLOWED_HOSTS = []
 
 # Application definition
 
+# TODO - READ through the following comment
+"""
+- "<app-name>" must be specified inside `INSTALLED_APPS` directive.
+- We can alternatively specify 'jobs.apps.JobsConfig' as the application 
+configuration is derived from `jobs/apps.py`
+
+- We must do `makemigrations` and `migrate` only after adding application here.
+
+
+"""
+
 INSTALLED_APPS = [
     'django.contrib.admin',
     'django.contrib.auth',

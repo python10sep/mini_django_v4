@@ -40,16 +40,29 @@ class Portal(models.Model):
     description = models.CharField(max_length=250)
 
     def __str__(self):
-        return self.name + "  " + self.description
+        return self.name
 
     def launch(self):
         self.save()
 
 
 class JobTitle(models.Model):
+    """
+    JobTitle will have association with many portals
+    `JobTitle` <--> `Portal`   (one-to-many relationship)
+    `job_description`  <--> `job_title` (one-to-one relationship)
+
+    """
+
     title = models.CharField(max_length=250)
     last_updated = models.DateTimeField(default=timezone.now)
+    job_description = models.OneToOneField(
+        "JobDescription", on_delete=models.CASCADE
+    )
     portal = models.ForeignKey(Portal, on_delete=Portal)
+
+    def __str__(self):
+        return self.title + f"( {self.portal} )"
 
 
 class JobDescription(models.Model):
@@ -58,17 +71,16 @@ class JobDescription(models.Model):
     pub_date = models.DateTimeField(default=timezone.now)
 
     def __str__(self):
-        return self.role_
+        return self.role
 
 
 class Applicant(models.Model):
-    job_description = models.ForeignKey(
-        JobDescription, on_delete=models.CASCADE
-    )
+    name = models.CharField(max_length=250, default="")
+    applied_for = models.ForeignKey(JobTitle, on_delete=models.CASCADE)
     cover_letter = models.CharField(max_length=250)
 
     def __str__(self):
-        return self.job_description
+        return self.name
 
 
 

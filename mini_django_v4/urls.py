@@ -15,13 +15,9 @@ Including another URLconf
 """
 
 from django.contrib import admin
-from django.urls import path, include, re_path
-
-
-from jobs import views
+from django.urls import path, include
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    # path("", views.welcome)
     path("jobs/", include("jobs.urls"))
 ]
