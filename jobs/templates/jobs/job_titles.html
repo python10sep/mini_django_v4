@@ -1,0 +1,9 @@
+{% if job_titles %}
+    <ul>
+    {% for job_title_ in job_titles %}
+        <li><a href="/jobs/jobtitles/{{ job_title_.id }}/">{{ job_title_.title }}</a></li>
+    {% endfor %}
+    </ul>
+{% else %}
+    <p>No job titles are available.</p>
+{% endif %}

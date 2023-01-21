@@ -1,13 +1,31 @@
 
 from django.urls import path, re_path
 from . import views  # import from current directory
+from . import views_v2
 
 
 urlpatterns = [
     re_path(r"^wel*", views.welcome, name="welcome"),
     path("portal/", views.get_portal_details, name="details"),
     path("jobtitles/", views.job_titles, name="jobtitle"),
-    path("<int:job_id>/", views.get_job_description, name="JD")
+    path("jobtitles/<int:job_id>/", views.get_job_description, name="JD"),
+
+    # V2 urls - using django generic views.
+    path(
+        "v2/applicants/",
+        views_v2.ApplicantList.as_view(),
+        name="applicant_list"
+    ),
+    path(
+        "v2/applicants/",
+        views_v2.ApplicantUpdate.as_view(),
+        name="applicant_update"
+    ),
+    path(
+        "v2/applicants/<int:pk>",
+        views_v2.ApplicantDelete.as_view(),
+        name="applicant_delete"
+    )
 ]
 ##########################################################
 # How to capture PATH parameters from URL?               #

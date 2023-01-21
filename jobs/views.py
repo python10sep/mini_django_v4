@@ -2,7 +2,10 @@ import logging
 from django.shortcuts import render
 from django.http import HttpResponse
 from django.http import JsonResponse
-from jobs.models import Portal, JobTitle
+from jobs.models import Portal, JobTitle, JobDescription
+
+# TODO use this to exempt CSRF
+from django.views.decorators.csrf import csrf_exempt
 
 # Create your views here.
 
@@ -31,20 +34,34 @@ def get_portal_details(request):
 
 
 def get_job_description(request, job_id):
-    return HttpResponse(f"<p> {job_id} ::"
-                        f" this job role requires candidate to have "
-                        f"good understanding of django</p>")
+
+    obj = JobDescription.objects.get(pk=job_id)
+    return render(
+        request, "jobs/job_description.html", {"job_description": obj}
+    )
+
+    # TODO - comment this and show above
+    # return HttpResponse(f"<p> {job_id} ::"
+    #                     f" this job role requires candidate to have "
+    #                     f"good understanding of django</p>")
 
 
+@csrf_exempt
 def job_titles(request):
     """plural endpoint for getting all job titles"""
 
     job_titles_ = JobTitle.objects.all()
+    return render(request, "jobs/job_titles.html", {"job_titles": job_titles_})
 
-    response = {}
-    for job in job_titles_:
-        temp = dict()
-        temp["job title"] = job.title
-        temp["job descr"] = job.job_description.role
-        response[job.id] = temp
-    return JsonResponse(response)
+    # TODO - comment this and show above
+    # response = {}
+    # for job in job_titles_:
+    #     temp = dict()
+    #     temp["job title"] = job.title
+    #     temp["job descr"] = job.job_description.role
+    #     response[job.id] = temp
+    # return JsonResponse(response)
+
+
+
+

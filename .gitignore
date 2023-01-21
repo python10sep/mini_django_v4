@@ -2,4 +2,7 @@
 *.pyc
 venv
 db.sqlite3
+<<<<<<< HEAD
 jobs/migrations
+=======
+>>>>>>> 3880105 (generic views)

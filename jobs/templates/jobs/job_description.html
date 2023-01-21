@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+{% if job_description %}
+<h3>ROLE</h3>>
+<br></br>
+<p>job_description.role </p>
+<br></br>
+<br></br>
+<h3>DESCRIPTION</h3>>
+<p>job_description.description_text</p>
+<br></br>
+<br></br>
+<h3>PUBLISHED ON</h3>>
+<p>job_description.pub_date</p>
+<br></br>
+{% else %}
+    <p>No job_description is available.</p>
+{% endif %}
+</body>
+</html>
