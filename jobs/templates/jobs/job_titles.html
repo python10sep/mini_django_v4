@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Job Titles</title>
+</head>
+<body>
+
+<ul>
+
+{% for job_title in objects %}
+    <li> <a href="{{job_title.id}}"> {{ job_title.title }} </a> </li>
+{% endfor %}
+
+    </ul>
+
+<a href="https://www.google.com"> GO TO GOOGLE </a>
+
+</body>
+</html>

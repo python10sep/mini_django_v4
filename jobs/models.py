@@ -73,6 +73,9 @@ class JobDescription(models.Model):
     def __str__(self):
         return self.role
 
+    def __repr__(self):
+        return self.role + f"( {self.pub_date} )"
+
 
 class Applicant(models.Model):
     name = models.CharField(max_length=250, default="")
@@ -81,6 +84,14 @@ class Applicant(models.Model):
 
     def __str__(self):
         return self.name
+
+
+"""
+Applicant <--> JobTitle
+JobTitle <--> Portal
+JobTitle <--> JobDescription
+
+"""
 
 
 
