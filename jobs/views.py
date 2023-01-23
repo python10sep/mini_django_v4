@@ -4,6 +4,9 @@ from django.http import HttpResponse
 from django.http import JsonResponse
 from jobs.models import Portal, JobTitle, JobDescription
 
+# TODO
+from django.views.decorators.csrf import csrf_exempt
+
 # Create your views here.
 
 
@@ -65,3 +68,14 @@ def job_titles(request):
     #     response[job.id] = temp
     # return JsonResponse(response)
     # ############################################################
+
+
+@csrf_exempt
+def applicant_func(request):
+    """
+    TODO: django request object does not have PUT, PATCH, DELETE
+    It only has GET and POST
+    """
+
+    breakpoint()
+    return "hello world"

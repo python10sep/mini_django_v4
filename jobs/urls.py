@@ -11,6 +11,10 @@ http://127.0.0.1:8000/jobs/<job_id>/
 http://127.0.0.1:8000/jobs/jobtitles  (PLURAL endpoint)
 http://127.0.0.1:8000/jobs/jobtitles/1/ (SINGULAR endpoint)
 
+
+# TODO - let's do DELETE, PATCH, POST, PUT for resource `applicant`
+# There will be single function-based view that should handle all of it.
+
 """
 
 from django.urls import path, re_path
@@ -24,6 +28,7 @@ urlpatterns = [
     path("portal/", views.get_portal_details, name="details"),
     path("jobtitles/", views.job_titles, name="jobtitle"),
     path("jobtitles/<int:job_id>/", views.get_job_description, name="JD"),
+    path("applicant/", views.applicant_func, name="applicant_func"),
 
     ## v2 URLs (created for generic class based views)
     path(
