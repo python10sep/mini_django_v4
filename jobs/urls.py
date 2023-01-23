@@ -30,6 +30,11 @@ urlpatterns = [
         "v2/applicants/",
         views_v2.ApplicantList.as_view(),
         name="applicant_list"
+    ),
+    path(
+        "v2/applicants/",
+        views_v2.ApplicationUpdate.as_view(),
+        name="application_update"
     )
 ]
 ##########################################################

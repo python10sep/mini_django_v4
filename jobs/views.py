@@ -1,8 +1,11 @@
 import logging
+import json
 from django.shortcuts import render
 from django.http import HttpResponse
 from django.http import JsonResponse
 from jobs.models import Portal, JobTitle, JobDescription
+
+from django.views.decorators.csrf import csrf_exempt
 
 # Create your views here.
 
@@ -43,8 +46,34 @@ def get_job_description(request, job_id):
     ############################################################
 
 
+@csrf_exempt
 def job_titles(request):
     """plural endpoint for getting all job titles"""
+
+    if request.method == "POST":
+        data = json.loads(request.body)
+
+        # TODO: perform a check if certain job_title already exist
+        # TODO: if title exists, return a message.
+
+        # portal
+        portal_data = data.get("portal")
+        portal_name = portal_data.get("name")
+        portal = Portal.objects.filter(name=portal_name)
+
+        if not portal:
+            portal = Portal.objects.create(**portal_data)
+            portal.save()
+        else:
+            portal = portal[0]
+
+        jd = data.get("job_description")
+        jd = JobDescription.objects.create(**jd)
+        jd.save()
+        data["job_description"] = jd
+        data["portal"] = portal
+        jt = JobTitle.objects.create(**data)
+        jt.save()
 
     job_titles_ = JobTitle.objects.all()
     return render(
@@ -65,3 +94,11 @@ def job_titles(request):
     #     response[job.id] = temp
     # return JsonResponse(response)
     # ############################################################
+
+
+    # ##########################################################
+    # # How to write a POST request endpoint in django?        #
+    # ##########################################################
+
+
+
