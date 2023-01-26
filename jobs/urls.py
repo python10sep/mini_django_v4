@@ -20,6 +20,8 @@ http://127.0.0.1:8000/jobs/jobtitles/1/ (SINGULAR endpoint)
 from django.urls import path, re_path
 from . import views  # import from current directory (function based views)
 from . import views_v2  # (class based views)
+from . import views_v3
+from . import views_v4  # (class based views using django serializers)
 
 
 
@@ -35,7 +37,26 @@ urlpatterns = [
         "v2/applicants/",
         views_v2.ApplicantList.as_view(),
         name="applicant_list"
-    )
+    ),
+
+    ## v3 URLs (created for django rest framework APIView)
+    path(
+        "v3/applicants/",
+        views_v3.Applicants.as_view(),
+        name="applicant_list"
+    ),
+    path(
+        "v3/users/",
+        views_v3.UserList.as_view(),
+        name="users_list"
+    ),
+
+    ## v4 URLs (created for django rest framework (with serializers)
+    path(
+        "v4/jobtitles/",
+        views_v4.jobtitle_list,
+        name="v4_jobtitles_list"
+    ),
 ]
 ##########################################################
 # How to capture PATH parameters from URL?               #
