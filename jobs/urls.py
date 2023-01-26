@@ -16,6 +16,7 @@ http://127.0.0.1:8000/jobs/jobtitles/1/ (SINGULAR endpoint)
 from django.urls import path, re_path
 from . import views  # import from current directory (function based views)
 from . import views_v2  # (class based views)
+from . import views_v3  # (class based view - using django rest framework )
 
 
 
@@ -35,6 +36,18 @@ urlpatterns = [
         "v2/applicants/",
         views_v2.ApplicationUpdate.as_view(),
         name="application_update"
+    ),
+
+    ## v3 URLs (created for django rest framework APIView)
+    path(
+        "v3/applicants/",
+        views_v3.Applicants.as_view(),
+        name="applicant_list"
+    ),
+    path(
+        "v3/users/",
+        views_v3.UserList.as_view(),
+        name="users_list"
     )
 ]
 ##########################################################
