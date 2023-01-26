@@ -11,6 +11,16 @@ class Applicants(APIView):
         # TODO - write logic to make json serializable dict and pass it to Response
         return Response(applicants)
 
+    def post(self, request):
+        # TODO - write logic to take json input from `request.body`
+        # TODO - write ORM queries to create new record in database.
+        pass
+
+    def delete(self, request):
+        # TODO - write logic to take json input from `request.body`
+        # TODO - write ORM queries to delete record in database.
+        pass
+
 
 class UserList(APIView):
     def get(self, request):

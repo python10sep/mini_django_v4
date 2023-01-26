@@ -59,7 +59,7 @@ class JobTitle(models.Model):
     job_description = models.OneToOneField(
         "JobDescription", on_delete=models.CASCADE
     )
-    portal = models.ForeignKey(Portal, on_delete=Portal)
+    portal = models.ForeignKey(Portal, on_delete=models.CASCADE)
 
     def __str__(self):
         return self.title + f"( {self.portal} )"

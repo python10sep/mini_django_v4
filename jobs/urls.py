@@ -17,6 +17,7 @@ from django.urls import path, re_path
 from . import views  # import from current directory (function based views)
 from . import views_v2  # (class based views)
 from . import views_v3  # (class based view - using django rest framework )
+from . import views_v4 # (function based view - using DRF and DRF-serialier)
 
 
 
@@ -48,6 +49,13 @@ urlpatterns = [
         "v3/users/",
         views_v3.UserList.as_view(),
         name="users_list"
+    ),
+
+    ## v4 URLs (created using DRF and Django Rest Framework)
+    path(
+        "v4/jobtitles",
+        views_v4.jobtitle_list,
+        name="v4_jobtitles_list"
     )
 ]
 ##########################################################
