@@ -4,6 +4,7 @@ from django.shortcuts import render
 from django.http import HttpResponse
 from django.http import JsonResponse
 from jobs.models import Portal, JobTitle, JobDescription
+from django.contrib.auth.models import User
 
 from django.views.decorators.csrf import csrf_exempt
 
@@ -11,7 +12,16 @@ from django.views.decorators.csrf import csrf_exempt
 
 
 def welcome(request):
-    return HttpResponse("<p> welcome to this job board application</p>")
+
+    # number of times user has visited web page
+    user_pk = request.session.get("_auth_user_id")
+    user = User.objects.get(pk=int(user_pk)) if user_pk else ""
+    username = user.username if user else "Unknown user"
+
+    visits = request.session.get("user_visits", 0)
+    request.session["user_visits"] = visits + 1
+    request.session.modified = True
+    return HttpResponse(f"<p> welcome to this job board application -{username} visits {visits} times</p>")
 
 
 def get_portal_details(request):

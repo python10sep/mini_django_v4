@@ -34,9 +34,9 @@ urlpatterns = [
         name="applicant_list"
     ),
     path(
-        "v2/applicants/",
-        views_v2.ApplicationUpdate.as_view(),
-        name="application_update"
+        "v2/applicants/create",
+        views_v2.ApplicantCreate.as_view(),
+        name="application_create"
     ),
 
     ## v3 URLs (created for django rest framework APIView)
