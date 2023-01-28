@@ -22,7 +22,6 @@ def welcome(request):
     request.session["user_visits"] = visits + 1
     request.session.modified = True
     response = HttpResponse(f"<p> welcome to this job board application -{username} visits {visits} times ()</p>")
-    breakpoint()
     return response
 
 
