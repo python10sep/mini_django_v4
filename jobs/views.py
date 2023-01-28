@@ -21,7 +21,9 @@ def welcome(request):
     visits = request.session.get("user_visits", 0)
     request.session["user_visits"] = visits + 1
     request.session.modified = True
-    return HttpResponse(f"<p> welcome to this job board application -{username} visits {visits} times</p>")
+    response = HttpResponse(f"<p> welcome to this job board application -{username} visits {visits} times ()</p>")
+    breakpoint()
+    return response
 
 
 def get_portal_details(request):
@@ -40,6 +42,7 @@ def get_portal_details(request):
         portals.append(obj.name)
 
     final = "=====".join(portals)
+
     return HttpResponse(f"<h1> {final} </h1>")
 
 

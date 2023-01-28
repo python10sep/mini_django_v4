@@ -1,6 +1,7 @@
 """
+This module has `django.views.generic` views.
 
-django.views.generic
+
 """
 
 
@@ -20,17 +21,20 @@ class ApplicantList(ListView):
 
 class ApplicantCreate(CreateView):
     model = Applicant
-    fields = ["name"]
-
-    def post(self, request, *args, **kwargs):
-        breakpoint()
-        return HttpResponse("<p>trial</p>")
+    fields = ["name", "applied_for", "cover_letter"]
+    success_url = reverse_lazy("v2_applicant_list")
 
 
-class ApplicationUpdate(UpdateView):
+class ApplicantUpdate(UpdateView):
     model = Applicant
     fields = ["id", "name", "cover_letter"]
-    success_url = reverse_lazy("application_list")
+    success_url = reverse_lazy("v2_applicant_list")
+
+
+class ApplicantDelete(DeleteView):
+    model = Applicant
+    success_url = reverse_lazy("v2_applicant_list")
+
 
 
 

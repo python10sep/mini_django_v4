@@ -14,4 +14,5 @@ admin.site.register(Applicant)
 admin.site.register(Portal)
 admin.site.register(JobTitle)
 
+
 ############################################################
