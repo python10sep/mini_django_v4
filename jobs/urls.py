@@ -31,24 +31,29 @@ urlpatterns = [
     path(
         "v2/applicants/",
         views_v2.ApplicantList.as_view(),
-        name="applicant_list"
+        name="v2_applicant_list"
     ),
     path(
         "v2/applicants/create",
         views_v2.ApplicantCreate.as_view(),
-        name="application_create"
+        name="v2_applicant_create"
+    ),
+    path(
+        "v2/applicants/update/<int:pk>",
+        views_v2.ApplicantUpdate.as_view(),
+        name="v2_applicant_update"
     ),
 
     ## v3 URLs (created for django rest framework APIView)
     path(
         "v3/applicants/",
         views_v3.Applicants.as_view(),
-        name="applicant_list"
+        name="v3_applicant_list"
     ),
     path(
         "v3/users/",
         views_v3.UserList.as_view(),
-        name="users_list"
+        name="v3_users_list"
     ),
 
     ## v4 URLs (created using DRF and Django Rest Framework)
