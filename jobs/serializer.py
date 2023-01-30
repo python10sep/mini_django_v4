@@ -71,4 +71,5 @@ class JobTitleSerializer(serializers.Serializer):
 #     data = [{"name": "Prashant", "description": "foosfa"}, {"name": "Prashant", "description": 1}]
 #     obj = PortalSerializer(data=data, many=True)
 #     obj.is_valid()
+#     data =
 

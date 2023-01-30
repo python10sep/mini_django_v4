@@ -39,6 +39,8 @@ def jobtitle_list(request):
         data["portal"] = portal_serializer
 
         serializer = JobTitleSerializer(data=data)
+
+        breakpoint()
         if serializer.is_valid():
             serializer.save()
 

@@ -63,6 +63,7 @@ MIDDLEWARE = [
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
     'middleware.simple_middleware',
+    'custom_middleware.CustomMiddleware'
 ]
 
 ROOT_URLCONF = 'mini_django_v4.urls'

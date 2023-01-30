@@ -1,7 +1,7 @@
 def simple_middleware(get_response):
     def middleware(request):
-        print("[ INFO ] ** BEFORE ** passing request to corresponding view")
+        print("[ INFO ] func-middleware ** before ** request processing")
         response = get_response(request)
-        print("[ INFO ] ** BEFORE ** sending out response")
+        print("[ INFO ] func-middleware ** after ** request processing")
         return response
     return middleware
