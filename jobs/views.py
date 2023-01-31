@@ -40,9 +40,7 @@ def get_portal_details(request):
     for obj in objs:
         portals.append(obj.name)
 
-    final = "=====".join(portals)
-
-    return HttpResponse(f"<h1> {final} </h1>")
+    return JsonResponse(portals, safe=False)
 
 
 def get_job_description(request, job_id):
